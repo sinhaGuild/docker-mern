@@ -13,6 +13,7 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=shunyasea
       - MONGO_INITDB_ROOT_PASSWORD=password
+    container_name: mongo_database
     volumes:
       #save as volume
       - mongo-db:/data/db

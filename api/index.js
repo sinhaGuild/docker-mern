@@ -3,19 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const connectDB = require("./db/connectDB");
-
 const session = require("express-session");
-/** Create Session store for authentication */
-const MongoDBStore = require("connect-mongodb-session")(session);
-const store = new MongoDBStore({
-  uri: process.env.MONGO_URI,
-  collection: "userSessions",
-});
-
-//error if session store connection did not work.
-store.on("error", function (error) {
-  console.log(`Could not connect to Sessions Store. Error ${error}`);
-});
 
 const PORT = process.env.PORT || 4000;
 const st = `Server is listening on PORT ${PORT}...`;
@@ -29,7 +17,7 @@ app.use(cors());
 /** Authentication session store */
 app.use(
   session({
-    store: store,
+    store: require("./db/connectStore"),
     resave: true,
     saveUninitialized: true,
     secret: process.env.SESSION_SECRET || "Secret",
