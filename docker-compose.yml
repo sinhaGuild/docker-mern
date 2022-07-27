@@ -8,6 +8,15 @@ services:
       - ./api:/app:ro
       - /app/node_modules
   
+  mongo:
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=shunyasea
+      - MONGO_INITDB_ROOT_PASSWORD=password
+    volumes:
+      #save as volume
+      - mongo-db:/data/db
+  
   client:
     build: ./client
     container_name: client_frontend
@@ -18,3 +27,6 @@ services:
       - /app/node_modules
     stdin_open: true
     tty: true
+
+volumes:
+  mongo-db:
