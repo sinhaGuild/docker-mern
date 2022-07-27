@@ -1,6 +1,7 @@
 require("colors");
 require("dotenv").config();
 const express = require("express");
+const cors = require("cors");
 const connectDB = require("./db/connectDB");
 
 const session = require("express-session");
@@ -23,6 +24,7 @@ const app = express();
 /** Basic express options */
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cors());
 
 /** Authentication session store */
 app.use(
