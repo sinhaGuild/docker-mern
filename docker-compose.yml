@@ -7,6 +7,8 @@ services:
     volumes:
       - ./api:/app:ro
       - /app/node_modules
+    depends_on:
+      - mongo
   
   mongo:
     image: mongo
@@ -28,6 +30,8 @@ services:
       - /app/node_modules
     stdin_open: true
     tty: true
+    depends_on:
+      - api
 
 volumes:
   mongo-db:
