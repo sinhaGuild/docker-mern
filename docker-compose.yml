@@ -1,9 +1,21 @@
 services:
+  nginx:
+    depends_on:
+      - api
+      - client
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: ./nginx
+    container_name: nginx
+    ports:
+    - "3050:80"
+
   api:
     build: ./api
     container_name: api_backend
-    ports:
-      - '4000:4000'
+    # ports:
+    #   - '4000:4000'
     volumes:
       - ./api:/app:ro
       - /app/node_modules
@@ -23,8 +35,8 @@ services:
   client:
     build: ./client
     container_name: client_frontend
-    ports:
-      - '3000:3000'
+    # ports:
+    #   - '3000:3000'
     volumes:
       - ./client:/app:ro
       - /app/node_modules

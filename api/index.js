@@ -29,9 +29,9 @@ app.use(
 
 /** Routes */
 //Posts
-app.use("/api/v1/posts", require("./routes/postRoutes"));
+app.use("/posts", require("./routes/postRoutes"));
 //Users, Auth
-app.use("/api/v1/users", require("./routes/userRoutes"));
+app.use("/users", require("./routes/userRoutes"));
 
 /** Start Server with async for future await microservices (like db, lambda functions etc.) */
 const startServer = async () => {
