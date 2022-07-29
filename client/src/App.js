@@ -21,7 +21,7 @@ function App() {
 
   return (
     <div className="container">
-      <h1 className="mb-2 mt-2 display-1">All Posts in DB</h1>
+      <h1 className="mb-2 mt-2 display-1">All Posts in DataBase</h1>
       <div className="row-cols-3">
         {posts.map((post) => {
           return (
